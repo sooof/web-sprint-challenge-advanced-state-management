@@ -30,7 +30,7 @@ import Smurf from './Smurf';
 }
 
 const mapStateToProps = state => {
-    // console.log("SumurfList state", state)
+    console.log("SumurfList state", state)
     return {
         smurfs: state.smurfs,
         isLoading: state.isLoading

@@ -13,7 +13,7 @@ const AddForm = (props) => {
 
     //remove when error state is added
     // const errorMessage = "hhh";
-    console.log("AddForm" ,props)
+    // console.log("AddForm" ,props)
     const {errorMessage, dispatch} = props
 
 
@@ -74,7 +74,7 @@ const AddForm = (props) => {
     </section>);
 }
 const mapStateToProps = state => {
-    console.log("AddForm currentState state", state)
+    // console.log("AddForm currentState state", state)
     return {
         smurfs: state.smurfs,
         errorMessage: state.errorMessage
