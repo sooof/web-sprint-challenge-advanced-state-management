@@ -26,14 +26,14 @@ const AddForm = (props) => {
     const handleSubmit = e => {
         e.preventDefault();
      
-        setError()
+        // setError()
         // fetchError("this causes an eror now")
-        console.log("handleSubmit")
+        // console.log("handleSubmit")
         if (state.name === "" || state.position === "" || state.nickname === "") {
             //dispatch a custom error action
             // fetchError("this causes an eror now")
-            setError()
-            // dispatch(setError())
+            // setError()
+            dispatch(setError())
 
         } else {
             //dispatch an addSmurf action
@@ -78,7 +78,8 @@ const mapStateToProps = state => {
     }
 }
 // export default AddForm;
-// export default connect(mapStateToProps)(AddForm);
+// export default connect (
+//     mapStateToProps)(AddForm)
 export default connect (
     mapStateToProps,
   {setError, addSmurf})(AddForm)

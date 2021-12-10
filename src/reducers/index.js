@@ -22,12 +22,21 @@ const reducer = (state = initialState, action)=>{
               ...state,
               errorMessage: `Name, position, and nickname must be filled out!`
             };
+        // case ADD_SMURF:
+        //     return {
+        //         ...state,
+        //         smurfs: [...state.smurfs, action.payload],
+        //         errorMessage: ``
+        //     };
         case ADD_SMURF:
-            return {
-                ...state,
-                smurfs: [...state.smurfs, action.payload],
-                errorMessage: ``
-            };
+        const newSnumrf = {
+            ...action.payload,
+                id: Date.now()
+        }
+        return {
+            ...state,
+            smurfs: [...state.smurfs, newSnumrf]
+        };
         // case FETCH_START:
         //     return {
         //         ...state,
