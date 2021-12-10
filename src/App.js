@@ -1,11 +1,10 @@
 import React , {useEffect} from "react";
 import {connect} from "react-redux"
-import axios from 'axios';
 
 import AddForm from './components/AddForm';
 import SmurfList from './components/SmurfList';
 import Header from './components/Header';
-import { setError, addSmurf, fetchStart, fetchSuccess, fetchError, fetchSmurfs } from './actions';
+import {fetchSmurfs } from './actions';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "./App.css";
@@ -15,17 +14,7 @@ const App = (props)=> {
   const {dispatch} = props
 
   useEffect(()=> {
-    console.log("useEffect")
-    dispatch(fetchSmurfs());
-    // dispatch(fetchStart());
-    // axios.get('http://localhost:3333/smurfs')
-    //   .then(resp=> {
-    //     console.log("axios.get", resp.data)
-    //     dispatch(fetchSuccess(resp.data));
-    //   })
-    //   .catch(err => {
-    //     dispatch(fetchError(err));
-    //   });
+      dispatch(fetchSmurfs())
   }, []);
 
   return (

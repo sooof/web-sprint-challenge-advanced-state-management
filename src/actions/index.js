@@ -29,7 +29,7 @@ export const fetchSmurfs = ()=> {
         dispatch({type: FETCH_START});
         
         // dispatch({type: FETCH_ERROR, payload:"Test error"});
-        setTimeout(() =>{
+        // setTimeout(() =>{
             axios.get('http://localhost:3333/smurfs')
                 .then(resp=> {
                 dispatch({type: FETCH_SUCCESS, payload: resp.data});
@@ -40,7 +40,7 @@ export const fetchSmurfs = ()=> {
                 dispatch(fetchError(err));
             });
             
-        }, 2000)
+        // }, 2000)
 
     }
 }
