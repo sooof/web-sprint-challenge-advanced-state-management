@@ -1,4 +1,8 @@
 import axios from 'axios';
+export const SET_ERROR = "SET_ERROR";
+export const setError = ()=> {
+    return({type: SET_ERROR});
+}
 
 export const FETCH_START = "FETCH_START";
 export const FETCH_SUCCESS = "FETCH_START";

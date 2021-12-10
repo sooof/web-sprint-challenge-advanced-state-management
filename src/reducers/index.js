@@ -1,5 +1,5 @@
 
-import {FETCH_START, FETCH_SUCCESS, FETCH_ERROR} from "../actions"
+import {SET_ERROR, FETCH_START, FETCH_SUCCESS, FETCH_ERROR} from "../actions"
 
 export const initialState = {
     smurfs: [
@@ -12,31 +12,36 @@ export const initialState = {
         },
     ],
     isLoading: false,
-    error : 'err test'
+    errorMessage : 'hh'
 }
 
 const reducer = (state = initialState, action)=>{
     switch(action.type){
+        case SET_ERROR:
+            return {
+              ...state,
+              errorMessage: `Name, position, and nickname must be filled out!`
+            };
         case FETCH_START:
             return {
                 ...state,
                 smurfs: [],
                 isLoading: true,
-                error: ''
+                errorMessage: ''
             }
         case FETCH_SUCCESS:
             return {
                 ...state,
                 smurfs: action.payload,
                 isLoading: false,
-                error: '' 
+                errorMessage: '' 
             }
         case FETCH_ERROR:
             return {
                 ...state,
                 smurfs: [],
                 isLoading: false,
-                error: action.payload
+                errorMessage: action.payload
             }
         default:
            return state
