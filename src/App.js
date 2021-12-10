@@ -1,4 +1,5 @@
-import React, { Component } from "react";
+import React from "react";
+import {connect} from "react-redux"
 
 import AddForm from './components/AddForm';
 import SmurfList from './components/SmurfList';
@@ -20,7 +21,9 @@ const App = ()=> {
   );
 }
 
-export default App;
+
+// export default App;
+export default connect(null, {})(App);
 
 //Task List:
 //1. Connect the fetchSmurfs actions to the App component.
