@@ -1,5 +1,5 @@
 
-// import {SET_ERROR, FETCH_START, FETCH_SUCCESS, FETCH_ERROR} from "../actions"
+import {FETCH_START, FETCH_SUCCESS, FETCH_ERROR} from "../actions"
 import {SET_ERROR,ADD_SMURF} from "../actions"
 export const initialState = {
     smurfs: [
@@ -29,35 +29,36 @@ const reducer = (state = initialState, action)=>{
         //         errorMessage: ``
         //     };
         case ADD_SMURF:
-        const newSnumrf = {
-            ...action.payload,
-                id: Date.now()
-        }
-        return {
-            ...state,
-            smurfs: [...state.smurfs, newSnumrf]
-        };
-        // case FETCH_START:
-        //     return {
-        //         ...state,
-        //         smurfs: [],
-        //         isLoading: true,
-        //         errorMessage: ''
-        //     }
-        // case FETCH_SUCCESS:
-        //     return {
-        //         ...state,
-        //         smurfs: action.payload,
-        //         isLoading: false,
-        //         errorMessage: '' 
-        //     }
-        // case FETCH_ERROR:
-        //     return {
-        //         ...state,
-        //         smurfs: [],
-        //         isLoading: false,
-        //         errorMessage: action.payload
-        //     }
+            const newSnumrf = {
+                ...action.payload,
+                    id: Date.now()
+            }
+            return {
+                ...state,
+                smurfs: [...state.smurfs, newSnumrf],
+                errorMessage: ``
+            };
+        case FETCH_START:
+            return {
+                ...state,
+                smurfs: [],
+                isLoading: true,
+                errorMessage: ''
+            }
+        case FETCH_SUCCESS:
+            return {
+                ...state,
+                smurfs: [...state.smurfs,  action.payload],
+                isLoading: false,
+                errorMessage: '' 
+            }
+        case FETCH_ERROR:
+            return {
+                ...state,
+                smurfs: [],
+                isLoading: false,
+                errorMessage: action.payload
+            }
         default:
            return state
     }

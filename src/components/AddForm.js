@@ -1,19 +1,20 @@
 import React, { useState } from 'react';
 import {connect} from "react-redux"
-// import { setError, addSmurf, fetchStart, fetchSuccess, fetchError } from './../actions';
-import { setError, addSmurf} from './../actions';
+import { setError, addSmurf, fetchStart, fetchSuccess, fetchError } from './../actions';
+// import { setError, addSmurf} from './../actions';
 const AddForm = (props) => {
-    const [state, setState] = useState({
+    const initFrom = {
         name:"",
         position:"",
         nickname:"",
         description:""
-    });
+    }
+    const [state, setState] = useState(initFrom);
 
     //remove when error state is added
     // const errorMessage = "hhh";
     console.log("AddForm" ,props)
-    const {setError,addSmurf, errorMessage, dispatch} = props
+    const {errorMessage, dispatch} = props
 
 
     const handleChange = e => {
@@ -21,6 +22,7 @@ const AddForm = (props) => {
             ...state,
             [e.target.name]:e.target.value
         });
+        // console.log("addFrom state = " ,state)
     }
 
     const handleSubmit = e => {
@@ -32,17 +34,18 @@ const AddForm = (props) => {
         if (state.name === "" || state.position === "" || state.nickname === "") {
             //dispatch a custom error action
             // fetchError("this causes an eror now")
-            // setError()
+            //setError("kk")
             dispatch(setError())
-
         } else {
             //dispatch an addSmurf action
             console.log("handleSubmit success", state)
-            addSmurf(state)
             // dispatch(fetchSuccess(state))
+            dispatch(addSmurf(state))
+            setState(initFrom)
+           
         }
     }
-    console.log("AddForm state = ", state)
+    // console.log("AddForm state = ", state)
 
     return(<section>
         <h2>Add Smurf</h2>
@@ -78,11 +81,11 @@ const mapStateToProps = state => {
     }
 }
 // export default AddForm;
-// export default connect (
-//     mapStateToProps)(AddForm)
 export default connect (
-    mapStateToProps,
-  {setError, addSmurf})(AddForm)
+    mapStateToProps)(AddForm)
+// export default connect (
+//     mapStateToProps,
+//   {setError, addSmurf})(AddForm)
 
 //Task List:
 //1. Connect the errorMessage, setError and addSmurf actions to the AddForm component.
