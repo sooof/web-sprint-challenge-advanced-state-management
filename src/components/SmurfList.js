@@ -1,9 +1,6 @@
-import React , {useEffect} from "react";
+import React from "react";
 import {connect} from "react-redux"
 import Smurf from './Smurf';
-
-import axios from 'axios';
-import { setError, addSmurf, fetchStart, fetchSuccess, fetchError } from './../actions';
 
  const SmurfList = (props)=> {
     // const isLoading = false;
@@ -15,22 +12,8 @@ import { setError, addSmurf, fetchStart, fetchSuccess, fetchError } from './../a
     //     nickname: 'Pops',
     //     description: 'Papa is the practical village leader and the father figure of 100 or so young Smurfs. He is easily identified by his red Smurf hat, pants, and a shortly-trimmed white beard and moustache.'
     // }
-   const {isLoading, smurfs, dispatch} = props 
-
-   useEffect(()=> {
-    console.log("useEffect")
-    // dispatch(getPerson());
-    dispatch(fetchStart());
-    axios.get('http://localhost:3333/smurfs')
-      .then(resp=> {
-        console.log("axios.get", resp.data)
-        dispatch(fetchSuccess(resp.data));
-      })
-      .catch(err => {
-        dispatch(fetchError(err));
-      });
-  }, []);
-
+   const {isLoading, smurfs} = props 
+   
     if (isLoading) {
         return <h1>Loading...</h1>;
     }
