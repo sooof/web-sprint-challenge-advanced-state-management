@@ -24,7 +24,7 @@ export const fetchError = (error) => {
 }
 
 
-export const getPerson = ()=> {
+export const fetchSmurfs = ()=> {
     return (dispatch) => {
         dispatch({type: FETCH_START});
         

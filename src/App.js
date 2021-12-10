@@ -5,7 +5,7 @@ import axios from 'axios';
 import AddForm from './components/AddForm';
 import SmurfList from './components/SmurfList';
 import Header from './components/Header';
-import { setError, addSmurf, fetchStart, fetchSuccess, fetchError, getPerson } from './actions';
+import { setError, addSmurf, fetchStart, fetchSuccess, fetchError, fetchSmurfs } from './actions';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "./App.css";
@@ -16,7 +16,7 @@ const App = (props)=> {
 
   useEffect(()=> {
     console.log("useEffect")
-    dispatch(getPerson());
+    dispatch(fetchSmurfs());
     // dispatch(fetchStart());
     // axios.get('http://localhost:3333/smurfs')
     //   .then(resp=> {
