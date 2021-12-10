@@ -11,10 +11,10 @@ import "./App.css";
 
 const App = (props)=> {
 
-  const {dispatch} = props
+  const {fetchSmurfs} = props
 
   useEffect(()=> {
-      dispatch(fetchSmurfs())
+      fetchSmurfs()
   }, []);
 
   return (
@@ -31,7 +31,7 @@ const App = (props)=> {
 
 
 // export default App;
-export default connect(null,)(App);
+export default connect(null,{fetchSmurfs})(App);
 
 //Task List:
 //1. Connect the fetchSmurfs actions to the App component.

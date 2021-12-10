@@ -11,7 +11,7 @@ const AddForm = (props) => {
     const [state, setState] = useState(initFrom);
 
     //remove when error state is added
-    const {errorMessage, dispatch} = props
+    const {errorMessage, setError, addSmurf} = props
 
 
     const handleChange = e => {
@@ -25,10 +25,10 @@ const AddForm = (props) => {
         e.preventDefault();
         if (state.name === "" || state.position === "" || state.nickname === "") {
             //dispatch a custom error action
-            dispatch(setError())
+            setError()
         } else {
             //dispatch an addSmurf action
-            dispatch(addSmurf(state))
+            addSmurf(state)
             setState(initFrom)
         }
     }
@@ -66,7 +66,7 @@ const mapStateToProps = state => {
     }
 }
 export default connect (
-    mapStateToProps)(AddForm)
+    mapStateToProps,{setError, addSmurf})(AddForm)
 
 //Task List:
 //1. Connect the errorMessage, setError and addSmurf actions to the AddForm component.
