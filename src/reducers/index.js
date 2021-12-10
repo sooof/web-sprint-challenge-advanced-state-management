@@ -12,7 +12,7 @@ export const initialState = {
         },
     ],
     isLoading: false,
-    error : ''
+    error : 'err test'
 }
 
 const reducer = (state = initialState, action)=>{

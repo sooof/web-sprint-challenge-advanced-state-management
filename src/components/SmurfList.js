@@ -12,16 +12,16 @@ import Smurf from './Smurf';
     //     nickname: 'Pops',
     //     description: 'Papa is the practical village leader and the father figure of 100 or so young Smurfs. He is easily identified by his red Smurf hat, pants, and a shortly-trimmed white beard and moustache.'
     // }
-
-    if (props.isLoading) {
+   const {isLoading, smurfs} = props 
+    if (isLoading) {
         return <h1>Loading...</h1>;
     }
-    console.log("SmurfList" ,props.smurfs)
+    // console.log("SmurfList" ,props.smurfs)
     // console.log("SmurfList t " ,testSmurf)
     return(<div className="listContainer">
         {/* <Smurf smurf={props.smurfs[0]}/> */}
         {
-            props.smurfs.map( (smurf, index) => (
+            smurfs.map( (smurf, index) => (
                 <Smurf key={index} smurf={smurf}/>
             ) )
         }
@@ -30,7 +30,7 @@ import Smurf from './Smurf';
 }
 
 const mapStateToProps = state => {
-    console.log("SumurfList state", state)
+    // console.log("SumurfList state", state)
     return {
         smurfs: state.smurfs,
         isLoading: state.isLoading
