@@ -1,6 +1,6 @@
 
-import {SET_ERROR, FETCH_START, FETCH_SUCCESS, FETCH_ERROR} from "../actions"
-
+// import {SET_ERROR, FETCH_START, FETCH_SUCCESS, FETCH_ERROR} from "../actions"
+import {SET_ERROR,ADD_SMURF} from "../actions"
 export const initialState = {
     smurfs: [
         {
@@ -12,7 +12,7 @@ export const initialState = {
         },
     ],
     isLoading: false,
-    errorMessage : 'hh'
+    errorMessage : ''
 }
 
 const reducer = (state = initialState, action)=>{
@@ -22,27 +22,33 @@ const reducer = (state = initialState, action)=>{
               ...state,
               errorMessage: `Name, position, and nickname must be filled out!`
             };
-        case FETCH_START:
+        case ADD_SMURF:
             return {
                 ...state,
-                smurfs: [],
-                isLoading: true,
-                errorMessage: ''
-            }
-        case FETCH_SUCCESS:
-            return {
-                ...state,
-                smurfs: action.payload,
-                isLoading: false,
-                errorMessage: '' 
-            }
-        case FETCH_ERROR:
-            return {
-                ...state,
-                smurfs: [],
-                isLoading: false,
-                errorMessage: action.payload
-            }
+                smurfs: [...state.smurfs, action.payload],
+                errorMessage: ``
+            };
+        // case FETCH_START:
+        //     return {
+        //         ...state,
+        //         smurfs: [],
+        //         isLoading: true,
+        //         errorMessage: ''
+        //     }
+        // case FETCH_SUCCESS:
+        //     return {
+        //         ...state,
+        //         smurfs: action.payload,
+        //         isLoading: false,
+        //         errorMessage: '' 
+        //     }
+        // case FETCH_ERROR:
+        //     return {
+        //         ...state,
+        //         smurfs: [],
+        //         isLoading: false,
+        //         errorMessage: action.payload
+        //     }
         default:
            return state
     }

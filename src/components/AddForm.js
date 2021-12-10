@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import {connect} from "react-redux"
-import { setError, fetchStart, fetchSuccess, fetchError } from './../actions';
-
+// import { setError, addSmurf, fetchStart, fetchSuccess, fetchError } from './../actions';
+import { setError, addSmurf} from './../actions';
 const AddForm = (props) => {
     const [state, setState] = useState({
         name:"",
@@ -13,7 +13,7 @@ const AddForm = (props) => {
     //remove when error state is added
     // const errorMessage = "hhh";
     console.log("AddForm" ,props)
-    const {setError,errorMessage, dispatch} = props
+    const {setError,addSmurf, errorMessage, dispatch} = props
 
 
     const handleChange = e => {
@@ -32,12 +32,13 @@ const AddForm = (props) => {
         if (state.name === "" || state.position === "" || state.nickname === "") {
             //dispatch a custom error action
             // fetchError("this causes an eror now")
-            // setError()
+            setError()
             // dispatch(setError())
 
         } else {
             //dispatch an addSmurf action
-            console.log("handleSubmit", state)
+            console.log("handleSubmit success", state)
+            addSmurf(state)
             // dispatch(fetchSuccess(state))
         }
     }
@@ -80,7 +81,7 @@ const mapStateToProps = state => {
 // export default connect(mapStateToProps)(AddForm);
 export default connect (
     mapStateToProps,
-  {setError})(AddForm)
+  {setError, addSmurf})(AddForm)
 
 //Task List:
 //1. Connect the errorMessage, setError and addSmurf actions to the AddForm component.
