@@ -14,19 +14,19 @@ const App = (props)=> {
 
   const {dispatch} = props
 
-  useEffect(()=> {
-    console.log("useEffect")
-    // dispatch(getPerson());
-    dispatch(fetchStart());
-    axios.get('http://localhost:3333/smurfs')
-      .then(resp=> {
-        console.log("axios.get", resp.data)
-        dispatch(fetchSuccess(resp.data));
-      })
-      .catch(err => {
-        dispatch(fetchError(err));
-      });
-  }, []);
+  // useEffect(()=> {
+  //   console.log("useEffect")
+  //   // dispatch(getPerson());
+  //   dispatch(fetchStart());
+  //   axios.get('http://localhost:3333/smurfs')
+  //     .then(resp=> {
+  //       console.log("axios.get", resp.data)
+  //       dispatch(fetchSuccess(resp.data));
+  //     })
+  //     .catch(err => {
+  //       dispatch(fetchError(err));
+  //     });
+  // }, []);
 
   return (
     <div className="App">
