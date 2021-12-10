@@ -35,7 +35,8 @@ const AddForm = (props) => {
             //dispatch a custom error action
             // fetchError("this causes an eror now")
             //setError("kk")
-            dispatch(setError())
+            // dispatch(setError())
+            dispatch(fetchError("this causes an eror now"))
         } else {
             //dispatch an addSmurf action
             console.log("handleSubmit success", state)

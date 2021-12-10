@@ -9,7 +9,7 @@ export const addSmurf = (smurf)=> {
 }
 export const FETCH_START = "FETCH_START";
 export const FETCH_SUCCESS = "FETCH_SUCCESS";
-export const FETCH_ERROR = "FETCH_START";
+export const FETCH_ERROR = "FETCH_ERROR";
 
 export const fetchStart = () => {
     return {type: FETCH_START}
@@ -26,22 +26,21 @@ export const fetchError = (error) => {
 
 export const getPerson = ()=> {
     return (dispatch) => {
-        // dispatch({type: FETCH_START});
-        // dispatch({type: FETCH_ERROR, payload:"Test error"});
-        // setTimeout(() =>{
-        //     dispatch({type: FETCH_ERROR, payload:"Test error"});
-        // }, 2000)
-
         dispatch({type: FETCH_START});
-        axios.get('http://localhost:3333/smurfs')
-            .then(resp=> {
-            dispatch({type: FETCH_SUCCESS, payload: resp.data});
-            console.log("axios.get", resp.data)
-            // dispatch(fetchSuccess(resp.data));
-        })
-        .catch(err => {
-            dispatch(fetchError(err));
-        });
+        
+        // dispatch({type: FETCH_ERROR, payload:"Test error"});
+        setTimeout(() =>{
+            axios.get('http://localhost:3333/smurfs')
+                .then(resp=> {
+                dispatch({type: FETCH_SUCCESS, payload: resp.data});
+                console.log("axios.get", resp.data)
+                // dispatch(fetchSuccess(resp.data));
+            })
+            .catch(err => {
+                dispatch(fetchError(err));
+            });
+            
+        }, 2000)
 
     }
 }
